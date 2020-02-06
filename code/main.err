@@ -1,0 +1,3 @@
+Warning[205] C:\USERS\ALUNO\DESKTOP\PORTABLEGIT\ECAI11\SIMON_GAME\CODE\MAIN.ASM 2 : Found directive in column 1. (list)
+Message[302] C:\USERS\ALUNO\DESKTOP\PORTABLEGIT\ECAI11\SIMON_GAME\CODE\MAIN.ASM 21 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\ALUNO\DESKTOP\PORTABLEGIT\ECAI11\SIMON_GAME\CODE\MAIN.ASM 24 : Register in operand not in bank 0.  Ensure that bank bits are correct.

@@ -1,14 +1,14 @@
-#include <pi16f887.inc>
+#include <p16f887.inc>
 list p=16f887
 
-	cblock	0x20		;nomendo endereco da mamória
+	cblock	0x20			;nomendo endereco da mamória
 		led_cnt
 	endc
 
-	org 	0x00		;vetor de reset
+	org 	0x00			;vetor de reset
 	goto 	Start
 	
-	org 	0x04		;vetor interrupção
+	org 	0x04			;vetor interrupção
 	retfie
 	
 Start:
@@ -16,22 +16,23 @@ Start:
 	;tris 0 input
 	;tris 1 output
 	
-	bsf STATUS, RP0 	;seleciona do bank0 00 to bank1 01
-	movlw B'11110000'	;bit menos significativo à direita
-	movwf TRISA			;configura RA0-RA3 como output
-						;configura RA4-RA7 como input
-	bsf STATUS, RP1		;seleciona do bank1 01 to bank3 11
-	clrf ANSEL 			;configura PORTA como entrada digital
+	bsf 	STATUS, RP0 	;seleciona do bank0 00 to bank1 01
+	movlw 	B'11110000'		;bit menos significativo à direita
+	movwf 	TRISA			;configura RA0-RA3 como output
+							;configura RA4-RA7 como input
+	bsf 	STATUS, RP1		;seleciona do bank1 01 to bank3 11
+	clrf 	ANSEL 			;configura PORTA como entrada digital
 	
 Main:
 
-	call RotinaInicializacao
+	call 	RotinaInicializacao
+	goto 	Main
 	;bcf STATUS, RPO		;seleciona do bank3 11 to bank2 10
 	;bcf STATUS, RP1		;seleciona do bank2 10 to bank0 00
 
 RotinaInicializacao:
 	
-	bcf	 	STATUS, RPO		;seleciona do bank3 11 to bank2 10
+	bcf	 	STATUS, RP0		;seleciona do bank3 11 to bank2 10
 	bcf 	STATUS, RP1		;seleciona do bank2 10 to bank0 00
 	movlw 	0x0F			;movendo b"00001111"
 	movwf	PORTA			;ligando os LEDs
@@ -66,7 +67,7 @@ LedContLoop:
 							
 	call	Delay_200ms		;chama função delay_200ms
 	
-	incf	led_cnt, F		;inclemente led_cont
+	incf	led_cnt, F		;incremente led_cont
 	
 	movlw	.4
 	subwf	led_cnt, W		;subtrai w de led_cont
@@ -74,4 +75,15 @@ LedContLoop:
 	goto	LedContLoop		;não
 	clrf	PORTA			;sim
 	return
+
+Delay_1s:
 	
+	nop
+	return
+
+Delay_200ms:
+
+	nop
+	return
+	
+	end
