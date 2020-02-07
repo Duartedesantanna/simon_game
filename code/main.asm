@@ -3,6 +3,8 @@ list p=16f887
 
 	cblock	0x20			;nomendo endereco da mamória
 		led_cnt
+		cnt_1
+		cnt_2
 	endc
 
 	org 	0x00			;vetor de reset
@@ -24,7 +26,8 @@ Start:
 	clrf 	ANSEL 			;configura PORTA como entrada digital
 	
 Main:
-
+	
+	;call	Delay_200ms
 	call 	RotinaInicializacao
 	goto 	Main
 	;bcf STATUS, RPO		;seleciona do bank3 11 to bank2 10
@@ -78,11 +81,46 @@ LedContLoop:
 
 Delay_1s:
 	
+	call Delay_200ms
+	call Delay_200ms
+	call Delay_200ms
+	call Delay_200ms
+	call Delay_200ms
+	return
+
+Delay_1ms:
+	movlw	.249
+	movwf	cnt_1
+Delay1:
 	nop
+	decfsz	cnt_1, F	;decrementa cnt_1
+	goto	Delay1
 	return
 
 Delay_200ms:
+	movlw	.200
+	movwf	cnt_2
+Delay2:
+	call	Delay_ms
+	decfsz	cnt_2, F
+	goto	Delay2
+	return
+Delay_ms:
+	movlw	.248
+	movwf	cnt_1
+Delay3:
+	nop
+	decfsz	cnt_1, F	;decrementa cnt_1
+	goto	Delay3
+	return
 
+Delay_10us:
+
+	nop
+	nop
+	nop
+	nop
+	nop
 	nop
 	return
 	
