@@ -17,12 +17,20 @@ __CONFIG _CONFIG2, 0x3FFF
 				; 0 = easy
 		sequency
 		move
+		last_move
+		last_input
+		timeout	; 0 == nao ocorreu time out
+				; 1 == ocorreu time out
+		current_move
+		
 	endc
 	
 	;cblock	0x5F
 	;	move_pointer		;ponteiro para memória de movimentos
 	;endc
 	
+	HARD_TIMEOUT	EQU	.3
+	EASY_TIMEOUT	EQU	.5
 	MOVE_BASE_ADDR	EQU	0x5F
 	TMR0_50MS	EQU	.61
 	LED_RED		EQU	B'00000001'
@@ -60,6 +68,10 @@ ExitInterrupt:
 	retfie
 	
 Start:
+
+;	movlw	.2
+;	sublw	.2
+	
 	;---- I/O config ----
 	;tris 0 input
 	;tris 1 output
@@ -72,6 +84,7 @@ Start:
 							;configura RA4-RA7 como input
 	bcf		TRISB, TRISB0	;configura RB0 como input
 	bcf		TRISB, TRISB1	;configura RB1 como input
+	clrf	TRISD			;todos os pinos da porta D como input
 	bsf 	STATUS, RP1		;seleciona do bank1 01 to bank3 11
 	clrf 	ANSEL 			;configura PORTA como entrada digital
 	clrf	ANSELH			;configura PORTB como entrada digital
@@ -100,6 +113,7 @@ Start:
 	movlw	MOVE_BASE_ADDR
 	movwf	FSR
 	bcf		STATUS, IRP
+	clrf	last_move
 	
 Main:
 	
@@ -154,8 +168,57 @@ SorteiaNumero:
 StoreNumber:
 
 	movwf	INDF
-	incf	FSR
+	incf	FSR, F
+	incf	last_move, F
 	return
+
+Entrada_de_movimento:
+
+	bcf		STATUS, RP1
+	bcf		STATUS, RP0
+	clrf	last_input
+	movlw	MOVE_BASE_ADDR
+	movlw	FSR				;
+	
+InputLoop:					;leitura de botao
+	
+	movf	PORTD, W
+	andlw	0x0F			;limpando do RD7 ao RD4 (RD<7:4>)
+	sublw	0x00
+	btfsc	STATUS, Z		;testa inputs
+	goto	ButtonNotPressed
+	goto	ButtonPressed
+	
+ButtonNotPressed:
+
+	btfss	timeout, 0		;ocorreu timeout?
+	goto	InputLoop		;nao
+	return
+	
+ButtonPressed:
+
+	movwf	current_move
+	call	CompareInput
+	sublw	.0
+	btfsc	STATUS, Z		;botao correto precionado?
+	return					;nao
+	incf	last_input, F	;sim
+	incf	FSR, F
+	movf	last_input, W
+	subwf	last_move, W
+	btfsc	STATUS, C		;las_input > last_move?
+	return
+	goto	InputLoop
+	
+CompareInput:
+
+	movf	current_move
+	subwf	INDF, W
+	btfss	STATUS, Z		;current_move == 0?
+	retlw	.0				;nao - botao errado
+	retlw	current_move	;sim - botao correto
+	
+	
 
 RotinaInicializacao:
 	
