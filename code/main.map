@@ -1,12 +1,14 @@
 MPLINK 4.49, Linker
-Linker Map File - Created Fri Feb 07 09:43:19 2020
+Linker Map File - Created Tue Feb 11 09:19:43 2020
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
                 ---------  ---------  ---------  ---------  ---------
                    .org_0       code   0x000000    program   0x000000
                    .org_1       code   0x000000    program   0x000002
-                   .org_2       code   0x000004    program   0x00008c
+                   .org_2       code   0x000004    program   0x00011a
+      .config_2007_MAIN.O       code   0x002007    program   0x000002
+      .config_2008_MAIN.O       code   0x002008    program   0x000002
 
 
 
@@ -14,43 +16,58 @@ Linker Map File - Created Fri Feb 07 09:43:19 2020
                                Start         End      
                            ---------   ---------      
                             0x000000    0x000000      
-                            0x000004    0x000049      
-            71 out of 8455 program addresses used, program memory utilization is 0%
+                            0x000004    0x000090      
+                            0x002007    0x002008      
+            144 out of 8455 program addresses used, program memory utilization is 1%
 
 
 
                               Symbols - Sorted by Name
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-                   Delay1   0x000033    program     static C:\Users\Aluno\Desktop\PortableGit\ecai11\simon_game\code\main.asm
-                   Delay2   0x000039    program     static C:\Users\Aluno\Desktop\PortableGit\ecai11\simon_game\code\main.asm
-                   Delay3   0x00003f    program     static C:\Users\Aluno\Desktop\PortableGit\ecai11\simon_game\code\main.asm
-               Delay_10us   0x000043    program     static C:\Users\Aluno\Desktop\PortableGit\ecai11\simon_game\code\main.asm
-                Delay_1ms   0x000031    program     static C:\Users\Aluno\Desktop\PortableGit\ecai11\simon_game\code\main.asm
-                 Delay_1s   0x00002b    program     static C:\Users\Aluno\Desktop\PortableGit\ecai11\simon_game\code\main.asm
-              Delay_200ms   0x000037    program     static C:\Users\Aluno\Desktop\PortableGit\ecai11\simon_game\code\main.asm
-                 Delay_ms   0x00003d    program     static C:\Users\Aluno\Desktop\PortableGit\ecai11\simon_game\code\main.asm
-              LedContLoop   0x000012    program     static C:\Users\Aluno\Desktop\PortableGit\ecai11\simon_game\code\main.asm
-                     Main   0x00000a    program     static C:\Users\Aluno\Desktop\PortableGit\ecai11\simon_game\code\main.asm
-      RotinaInicializacao   0x00000c    program     static C:\Users\Aluno\Desktop\PortableGit\ecai11\simon_game\code\main.asm
-                    Start   0x000005    program     static C:\Users\Aluno\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+                   Delay1   0x00007a    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+                   Delay2   0x000080    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+                   Delay3   0x000086    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+               Delay_10us   0x00008a    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+                Delay_1ms   0x000078    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+                 Delay_1s   0x000072    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+              Delay_200ms   0x00007e    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+                 Delay_ms   0x000084    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+            ExitInterrupt   0x000011    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+              LedContLoop   0x000059    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+                LevelEasy   0x000037    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+                LevelHard   0x000039    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+                     Main   0x00002f    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+                Main_Loop   0x00003b    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+      RotinaInicializacao   0x000053    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+            SorteiaNumero   0x00003e    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+                    Start   0x000016    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+              StoreNumber   0x000050    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+          Timer0Interrupt   0x00000b    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
 
 
 
                               Symbols - Sorted by Address
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-                    Start   0x000005    program     static C:\Users\Aluno\Desktop\PortableGit\ecai11\simon_game\code\main.asm
-                     Main   0x00000a    program     static C:\Users\Aluno\Desktop\PortableGit\ecai11\simon_game\code\main.asm
-      RotinaInicializacao   0x00000c    program     static C:\Users\Aluno\Desktop\PortableGit\ecai11\simon_game\code\main.asm
-              LedContLoop   0x000012    program     static C:\Users\Aluno\Desktop\PortableGit\ecai11\simon_game\code\main.asm
-                 Delay_1s   0x00002b    program     static C:\Users\Aluno\Desktop\PortableGit\ecai11\simon_game\code\main.asm
-                Delay_1ms   0x000031    program     static C:\Users\Aluno\Desktop\PortableGit\ecai11\simon_game\code\main.asm
-                   Delay1   0x000033    program     static C:\Users\Aluno\Desktop\PortableGit\ecai11\simon_game\code\main.asm
-              Delay_200ms   0x000037    program     static C:\Users\Aluno\Desktop\PortableGit\ecai11\simon_game\code\main.asm
-                   Delay2   0x000039    program     static C:\Users\Aluno\Desktop\PortableGit\ecai11\simon_game\code\main.asm
-                 Delay_ms   0x00003d    program     static C:\Users\Aluno\Desktop\PortableGit\ecai11\simon_game\code\main.asm
-                   Delay3   0x00003f    program     static C:\Users\Aluno\Desktop\PortableGit\ecai11\simon_game\code\main.asm
-               Delay_10us   0x000043    program     static C:\Users\Aluno\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+          Timer0Interrupt   0x00000b    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+            ExitInterrupt   0x000011    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+                    Start   0x000016    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+                     Main   0x00002f    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+                LevelEasy   0x000037    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+                LevelHard   0x000039    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+                Main_Loop   0x00003b    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+            SorteiaNumero   0x00003e    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+              StoreNumber   0x000050    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+      RotinaInicializacao   0x000053    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+              LedContLoop   0x000059    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+                 Delay_1s   0x000072    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+                Delay_1ms   0x000078    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+                   Delay1   0x00007a    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+              Delay_200ms   0x00007e    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+                   Delay2   0x000080    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+                 Delay_ms   0x000084    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+                   Delay3   0x000086    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
+               Delay_10us   0x00008a    program     static C:\Users\eduardoduarte\Desktop\PortableGit\ecai11\simon_game\code\main.asm
 
 
